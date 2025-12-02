@@ -129,6 +129,31 @@ export const Posts: CollectionConfig<'posts'> = {
               hasMany: true,
               relationTo: 'categories',
             },
+            {
+              name: 'categoryTag',
+              type: 'text',
+              label: 'Category Tag',
+              admin: {
+                position: 'sidebar',
+              },
+            },
+            {
+              name: 'site',
+              type: 'relationship',
+              admin: {
+                position: 'sidebar',
+              },
+              relationTo: 'sites',
+            },
+            {
+              name: 'featured',
+              type: 'checkbox',
+              label: 'Featured',
+              admin: {
+                position: 'sidebar',
+              },
+              defaultValue: false,
+            },
           ],
           label: 'Meta',
         },
