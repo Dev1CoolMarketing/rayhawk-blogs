@@ -41,7 +41,7 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     // When BLOB_READ_WRITE_TOKEN is present (Vercel), use Blob storage instead of writing to the filesystem
-    ...(process.env.BLOB_READ_WRITE_TOKEN
+    ...(process.env.BLOB_READ_WRITE_TOKEN || process.env.RAYHAWK_SECRET_READ_WRITE_TOKEN
       ? {}
       : { staticDir: path.resolve(dirname, '../../public/media') }),
     adminThumbnail: 'thumbnail',

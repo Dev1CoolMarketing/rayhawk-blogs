@@ -18,6 +18,9 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 
+const blobToken =
+  process.env.BLOB_READ_WRITE_TOKEN || process.env.RAYHAWK_SECRET_READ_WRITE_TOKEN || ''
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -74,7 +77,7 @@ export default buildConfig({
       collections: {
         [Media.slug]: true,
       },
-      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+      token: blobToken,
     }),
     // storage-adapter-placeholder
   ],
