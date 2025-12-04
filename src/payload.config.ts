@@ -70,7 +70,14 @@ export default buildConfig({
     },
   }),
   collections: [Pages, Posts, Media, Categories, Sites, Users],
-  cors: [getServerSideURL(), 'http://localhost:5000'].filter(Boolean),
+  cors: [
+    getServerSideURL(),
+    'http://localhost:5000',
+    'http://localhost:3001',
+    'http://localhost:8081',
+    'https://t-shots-main.vercel.app',
+    'https://www.drneo.com',
+  ].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
     ...plugins,

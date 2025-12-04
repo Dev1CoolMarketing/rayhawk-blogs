@@ -52,7 +52,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pt-16 pb-16">
+    <article className="pt-20 pb-24">
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
@@ -62,12 +62,19 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
+      <div className="flex flex-col items-center gap-14 pt-16 pb-6">
+        <div className="container flex flex-col items-center gap-14">
+          <div className="relative w-full max-w-[75rem] overflow-hidden rounded-3xl border border-white/40 bg-white/80 shadow-[0_20px_80px_-45px_rgba(0,0,0,0.6)] backdrop-blur-xl dark:border-white/10 dark:bg-neutral-900/70 animate-fade-in-up">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 dark:from-white/5 dark:via-transparent dark:to-white/0" />
+            <RichText
+              className="relative z-10 mx-auto w-[87.5%] max-w-[62rem] py-10 md:py-14"
+              data={post.content}
+              enableGutter={false}
+            />
+          </div>
           {post.relatedPosts && post.relatedPosts.length > 0 && (
             <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+              className="w-full max-w-[72rem] animate-fade-in-up"
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}
