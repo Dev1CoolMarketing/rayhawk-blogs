@@ -9,6 +9,7 @@ import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
+import { post4 } from './post-4'
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -169,28 +170,29 @@ export const seed = async ({
     data: post3({ heroImage: image3Doc, blockImage: image1Doc, author: demoAuthor }),
   })
 
+  const post4Doc = await payload.create({
+    collection: 'posts',
+    depth: 0,
+    context: {
+      disableRevalidate: true,
+    },
+    data: post4({ heroImage: imageHomeDoc, blockImage: image2Doc, author: demoAuthor }),
+  })
+
   // update each post with related posts
-  await payload.update({
-    id: post1Doc.id,
-    collection: 'posts',
-    data: {
-      relatedPosts: [post2Doc.id, post3Doc.id],
-    },
-  })
-  await payload.update({
-    id: post2Doc.id,
-    collection: 'posts',
-    data: {
-      relatedPosts: [post1Doc.id, post3Doc.id],
-    },
-  })
-  await payload.update({
-    id: post3Doc.id,
-    collection: 'posts',
-    data: {
-      relatedPosts: [post1Doc.id, post2Doc.id],
-    },
-  })
+  const postDocs = [post1Doc, post2Doc, post3Doc, post4Doc]
+
+  await Promise.all(
+    postDocs.map((doc) =>
+      payload.update({
+        id: doc.id,
+        collection: 'posts',
+        data: {
+          relatedPosts: postDocs.filter((related) => related.id !== doc.id).map(({ id }) => id),
+        },
+      }),
+    ),
+  )
 
   payload.logger.info(`— Seeding contact form...`)
 

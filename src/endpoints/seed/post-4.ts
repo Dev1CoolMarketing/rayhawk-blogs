@@ -1,0 +1,260 @@
+import { RequiredDataFromCollectionSlug } from 'payload'
+import type { PostArgs } from './post-1'
+
+export const post4: (args: PostArgs) => RequiredDataFromCollectionSlug<'posts'> = ({
+  heroImage,
+  blockImage,
+  author,
+}) => {
+  return {
+    slug: 'neo-hair-restoration',
+    _status: 'published',
+    authors: [author],
+    overlayHeading: 'Neo Hair Restoration',
+    overlaySubheading: 'Consultation-to-confidence journey for regrowth-ready patients.',
+    content: {
+      root: {
+        type: 'root',
+        children: [
+          {
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Neo Hair Restoration guides patients from first consult through long-term regrowth with science-backed care.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h2',
+            version: 1,
+          },
+          {
+            type: 'block',
+            fields: {
+              blockName: 'Disclaimer',
+              blockType: 'banner',
+              content: {
+                root: {
+                  type: 'root',
+                  children: [
+                    {
+                      type: 'paragraph',
+                      children: [
+                        {
+                          type: 'text',
+                          detail: 0,
+                          format: 1,
+                          mode: 'normal',
+                          style: '',
+                          text: 'Disclaimer:',
+                          version: 1,
+                        },
+                        {
+                          type: 'text',
+                          detail: 0,
+                          format: 0,
+                          mode: 'normal',
+                          style: '',
+                          text: ' This is demo content. Update it in the admin to match your own treatment paths.',
+                          version: 1,
+                        },
+                      ],
+                      direction: 'ltr',
+                      format: '',
+                      indent: 0,
+                      textFormat: 0,
+                      version: 1,
+                    },
+                  ],
+                  direction: 'ltr',
+                  format: '',
+                  indent: 0,
+                  version: 1,
+                },
+              },
+              style: 'info',
+            },
+            format: '',
+            version: 2,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Every case begins with mapping density, scalp health, and lifestyle factors. From there, tailored plans blend minimally invasive procedures with daily protocols that are realistic for patients to maintain.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            version: 1,
+          },
+          {
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'What makes Neo Hair Restoration different',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h3',
+            version: 1,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'We combine diagnostic imaging with regenerative therapies and precise at-home care. The goal: rebuild follicular strength, reduce shedding triggers, and keep patients encouraged with milestone-based tracking.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            version: 1,
+          },
+          {
+            type: 'block',
+            fields: {
+              blockName: 'Patient Spotlight',
+              blockType: 'quote',
+              quote:
+                'This is a job you can learn now, and for the rest of your life, you can do it. If you learn how to capture and edit audio at a young age, you can evolve that into a career.',
+              attribution: 'Dr. Daryl Dickerson',
+              context: 'Director of Music Education, Ellis Marsalis Center for Music',
+            },
+            format: '',
+            version: 2,
+          },
+          {
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Candidate checklist',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h3',
+            version: 1,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Ideal candidates are committed to consistent topical use, monthly check-ins, and short in-office sessions. Smoking cessation and nutrition coaching are included to support scalp health.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            version: 1,
+          },
+          {
+            type: 'block',
+            fields: {
+              blockName: '',
+              blockType: 'mediaBlock',
+              media: blockImage.id,
+            },
+            format: '',
+            version: 2,
+          },
+          {
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Key milestones',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h3',
+            version: 1,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Weeks 1–4: calming scalp protocols and shedding reduction. Weeks 5–12: new growth support with targeted nourishment. Weeks 12–24: density-building boosters and styling confidence sessions.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            textFormat: 0,
+            version: 1,
+          },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+      },
+    },
+    heroImage: heroImage.id,
+    meta: {
+      description:
+        'A science-backed, milestone-driven path to regrowth that meets patients where they are.',
+      image: heroImage.id,
+      title: 'Neo Hair Restoration',
+    },
+    relatedPosts: [],
+    title: 'Neo Hair Restoration',
+  } as RequiredDataFromCollectionSlug<'posts'>
+}

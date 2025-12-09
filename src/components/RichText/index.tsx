@@ -18,13 +18,24 @@ import type {
   CallToActionBlock as CTABlockProps,
   MediaBlock as MediaBlockProps,
 } from '@/payload-types'
+import type { CarouselBlock as CarouselBlockProps } from '@/blocks/Carousel/types'
+import type { QuoteBlock as QuoteBlockProps } from '@/blocks/Quote/types'
 import { BannerBlock } from '@/blocks/Banner/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
+import { CarouselBlock } from '@/blocks/Carousel/Component'
+import { QuoteBlock } from '@/blocks/Quote/Component'
 import { cn } from '@/utilities/ui'
 
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+  | SerializedBlockNode<
+      | CTABlockProps
+      | MediaBlockProps
+      | BannerBlockProps
+      | CodeBlockProps
+      | CarouselBlockProps
+      | QuoteBlockProps
+    >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -52,6 +63,10 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
     cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+    carousel: ({ node }) => (
+      <CarouselBlock className="col-start-1 col-span-3" {...node.fields} />
+    ),
+    quote: ({ node }) => <QuoteBlock className="col-start-2 col-span-1" {...node.fields} />,
   },
 })
 

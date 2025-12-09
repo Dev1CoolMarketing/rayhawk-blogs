@@ -53,11 +53,38 @@ export const hero: Field = {
       }),
       label: false,
     },
+    {
+      name: 'subtitle',
+      type: 'text',
+      label: 'Subtitle',
+      admin: {
+        condition: (_, { type } = {}) => type && type !== 'none',
+        description: 'Optional text shown directly under the main heading.',
+      },
+    },
     linkGroup({
       overrides: {
         maxRows: 2,
       },
     }),
+    {
+      name: 'overlayHeading',
+      type: 'text',
+      label: 'Overlay Heading',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        description: 'Optional large text shown on top of the hero media.',
+      },
+    },
+    {
+      name: 'overlaySubheading',
+      type: 'text',
+      label: 'Overlay Subheading',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        description: 'Optional secondary line shown under the overlay heading.',
+      },
+    },
     {
       name: 'media',
       type: 'upload',

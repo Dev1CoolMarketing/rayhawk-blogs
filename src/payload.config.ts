@@ -76,6 +76,8 @@ export default buildConfig({
     'http://localhost:3001',
     'http://localhost:8081',
     'https://t-shots-main.vercel.app',
+    'https://neo-repit-copy-git-develop-developer-ones-projects.vercel.app',
+    'https://drneo.com',
     'https://www.drneo.com',
   ].filter(Boolean),
   globals: [Header, Footer],
