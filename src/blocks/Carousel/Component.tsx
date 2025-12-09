@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { CarouselClient } from './Component.client'
-import type { CarouselBlock } from './types'
+import type { CarouselBlock as CarouselBlockType } from './types'
 
-type Props = CarouselBlock & {
+type Props = CarouselBlockType & {
   className?: string
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import type { QuoteBlock } from './types'
+import type { QuoteBlock as QuoteBlockType } from './types'
 
-type Props = QuoteBlock & {
+type Props = QuoteBlockType & {
   className?: string
 }
 

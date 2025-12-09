@@ -57,9 +57,9 @@ export const Carousel: Block = {
       type: 'number',
       label: 'Slide duration (ms)',
       defaultValue: 5000,
+      min: 1500,
       admin: {
         description: 'Time each slide stays on screen when auto-play is enabled.',
-        min: 1500,
         step: 500,
       },
     },
