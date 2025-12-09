@@ -176,6 +176,10 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    /**
+     * Optional text shown directly under the main heading.
+     */
+    subtitle?: string | null;
     links?:
       | {
           link: {
@@ -200,6 +204,14 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
+    /**
+     * Optional large text shown on top of the hero media.
+     */
+    overlayHeading?: string | null;
+    /**
+     * Optional secondary line shown under the overlay heading.
+     */
+    overlaySubheading?: string | null;
     media?: (number | null) | Media;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
@@ -228,7 +240,18 @@ export interface Page {
 export interface Post {
   id: number;
   title: string;
+  /**
+   * Supports images or videos.
+   */
   heroImage?: (number | null) | Media;
+  /**
+   * Large text over the hero media.
+   */
+  overlayHeading?: string | null;
+  /**
+   * Smaller line beneath the overlay heading.
+   */
+  overlaySubheading?: string | null;
   content: {
     root: {
       type: string;
@@ -1087,6 +1110,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        subtitle?: T;
         links?:
           | T
           | {
@@ -1102,6 +1126,8 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
+        overlayHeading?: T;
+        overlaySubheading?: T;
         media?: T;
       };
   layout?:
@@ -1218,6 +1244,8 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
   heroImage?: T;
+  overlayHeading?: T;
+  overlaySubheading?: T;
   content?: T;
   relatedPosts?: T;
   categories?: T;
@@ -1830,6 +1858,71 @@ export interface CodeBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'code';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock".
+ */
+export interface CarouselBlock {
+  slides: {
+    media: number | Media;
+    heading?: string | null;
+    description?: string | null;
+    /**
+     * Optional link or button for this slide.
+     */
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+      /**
+       * Choose how the link should be rendered.
+       */
+      appearance?: ('default' | 'outline') | null;
+    };
+    id?: string | null;
+  }[];
+  autoPlay?: boolean | null;
+  /**
+   * Time each slide stays on screen when auto-play is enabled.
+   */
+  autoPlayInterval?: number | null;
+  showDots?: boolean | null;
+  showArrows?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuoteBlock".
+ */
+export interface QuoteBlock {
+  /**
+   * Primary quote text.
+   */
+  quote: string;
+  /**
+   * Who said it.
+   */
+  attribution?: string | null;
+  /**
+   * Optional role or organization.
+   */
+  context?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'quote';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

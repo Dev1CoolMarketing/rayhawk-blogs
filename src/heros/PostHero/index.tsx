@@ -9,7 +9,18 @@ import { formatAuthors } from '@/utilities/formatAuthors'
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
-  const { categories, heroImage, populatedAuthors, publishedAt, title } = post
+  const {
+    categories,
+    heroImage,
+    populatedAuthors,
+    publishedAt,
+    title,
+    overlayHeading,
+    overlaySubheading,
+  } = post as Post & {
+    overlayHeading?: string | null
+    overlaySubheading?: string | null
+  }
 
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
@@ -67,7 +78,7 @@ export const PostHero: React.FC<{
           </div>
         </div>
       </div>
-      <div className="min-h-[80vh] select-none">
+      <div className="min-h-[80vh] select-none relative">
         {heroImage && typeof heroImage !== 'string' && (
           <Media
             fill
@@ -75,6 +86,14 @@ export const PostHero: React.FC<{
             imgClassName="-z-10 object-cover animate-fade-in"
             resource={heroImage}
           />
+        )}
+        {(overlayHeading || overlaySubheading) && (
+          <div className="absolute bottom-6 left-6 max-w-lg rounded-2xl bg-black/65 p-5 text-white backdrop-blur">
+            {overlayHeading && <p className="text-xl font-semibold">{overlayHeading}</p>}
+            {overlaySubheading && (
+              <p className="mt-2 text-sm text-white/85">{overlaySubheading}</p>
+            )}
+          </div>
         )}
         <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent" />
       </div>

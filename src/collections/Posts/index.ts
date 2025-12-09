@@ -13,7 +13,9 @@ import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
+import { Carousel } from '../../blocks/Carousel/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { Quote } from '../../blocks/Quote/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
@@ -80,6 +82,25 @@ export const Posts: CollectionConfig<'posts'> = {
               name: 'heroImage',
               type: 'upload',
               relationTo: 'media',
+              admin: {
+                description: 'Supports images or videos.',
+              },
+            },
+            {
+              name: 'overlayHeading',
+              type: 'text',
+              label: 'Hero Overlay Heading',
+              admin: {
+                description: 'Large text over the hero media.',
+              },
+            },
+            {
+              name: 'overlaySubheading',
+              type: 'text',
+              label: 'Hero Overlay Subheading',
+              admin: {
+                description: 'Smaller line beneath the overlay heading.',
+              },
             },
             {
               name: 'content',
@@ -89,7 +110,7 @@ export const Posts: CollectionConfig<'posts'> = {
                   return [
                     ...rootFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
+                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, Carousel, Quote] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
